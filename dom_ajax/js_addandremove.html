@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thêm và Xóa Dòng</title>
+<style>
+  .row { margin-bottom: 10px; }
+  .input { margin-right: 5px; }
+  .button { padding: 5px 10px; }
+</style>
+</head>
+<body>
+<div id="input-container">
+  <div class="row" id="row1">
+    Sp1 :
+    <input type="text" class="input" name="eingabe" value="Hallo1" id="e1" />
+    <input type="text" class="input" name="eingabe" value="Hallo1" id="e1" />
+    <input type="text" class="input" name="eingabe" value="Hallo1" id="e1" />
+    <button class="button" onclick="addRow()">Thêm</button>
+    <button class="button" onclick="removeRow('row1')">Xóa</button>
+  </div>
+</div>
+<script type="text/javascript">
+var currentId = 1;
+function addRow() {
+  currentId++;
+  var container = document.getElementById('input-container');
+  var newRow = document.createElement('div');
+  newRow.className = 'row';
+  newRow.id = 'row' + currentId;
+  newRow.innerHTML = 'Sp'+ currentId +' : <input type="text" class="input" name="eingabe" value="Hallo' + currentId + '" id="e' + currentId + '" /> ' +
+                    '<input type="text" class="input" name="eingabe" value="Hallo' + currentId + '" id="e' + currentId + '" /> ' +
+                    '<input type="text" class="input" name="eingabe" value="Hallo' + currentId + '" id="e' + currentId + '" /> ' +
+                    '<button class="button" onclick="addRow()">Thêm</button> '+
+                     '<button class="button" onclick="removeRow(\'row' + currentId + '\')">Xóa</button>';
+  container.appendChild(newRow);
+}
+
+function removeRow(id) {
+  var row = document.getElementById(id);
+  row.parentNode.removeChild(row);
+}
+</script>
+
+</body>
+</html>
